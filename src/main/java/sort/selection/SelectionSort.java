@@ -1,4 +1,4 @@
-package sort.insertion;
+package sort.selection;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

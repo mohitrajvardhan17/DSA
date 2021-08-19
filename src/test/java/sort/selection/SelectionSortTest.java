@@ -1,4 +1,4 @@
-package sort.insertion;
+package sort.selection;
 
 import org.junit.Test;
 import sort.SortingStrategy;
