@@ -1,4 +1,4 @@
-package sort.insertion;
+package sort.selection;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -9,35 +9,38 @@ import sort.SortingStrategy;
 import java.util.Comparator;
 
 /**
- * Stable Sorting Algorithms:
+ * Unstable Sorting Algorithms:
  * TIME COMPLEXITY
- * BEST = O(n)
+ * BEST = O(n^2)
  * AVERAGE = O(n^2)
  * WORST = O(n^2)
- *
- *
+ * <p>
+ * <p>
  * SPACE COMPLEXITY
  * WORST = O(1)
- *
+ * <p>
  * WORKING PRINCIPLE
- * https://brilliant.org/wiki/insertion/
+ * https://www.educba.com/selection-sort-in-data-structure/
  */
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class InsertionSort<T> implements SortingStrategy<T> {
+public class SelectionSort<T> implements SortingStrategy<T> {
 
     private final @NonNull Comparator<T> comparator;
 
     @Override
     public T[] sort(T[] items) {
-        int j = 0;
-        for (int i = 0; i < items.length; i++) {
-            j = i;
-            while (j > 0 && compare(items[j - 1], items[j]) > 0) {
-                swap(items, j - 1, j);
-                j--;
-            }
+        int min = 0;
+        for (int i = 0; i < items.length - 1; i++) {
             display(items);
+            min = i;
+            for (int j = i + 1; j < items.length; j++) {
+                if (comparator.compare(items[min], items[j]) > 0) {
+                    min = j;
+                }
+            }
+            swap(items, min, i);
+
         }
         return items;
     }
