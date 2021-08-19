@@ -5,7 +5,7 @@ import java.util.Arrays;
 public interface SortingStrategy<T> {
     T[] sort(T[] items);
 
-    int compare(final T item1, final T item2);
+    int compare(final T firstItem,final T secondItem);
 
     default void swap(T[] items, int sourceIndex, int targetIndex) {
         T temp = items[sourceIndex];

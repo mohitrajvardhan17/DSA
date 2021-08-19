@@ -10,13 +10,12 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class InsertionSortTest {
-
+public class SelectionSortTest {
 
     @Test
     public void sortString() {
         Comparator<Character> comparator = Character::compare;
-        SortingStrategy<Character> insertionSort = new InsertionSort<>(comparator);
+        SortingStrategy<Character> insertionSort = new SelectionSort<>(comparator);
         Character[] letters = "INSERTIONSORT".chars().mapToObj(c -> (char) c).toArray(Character[]::new);
         Character[] result = insertionSort.sort(letters);
         assertNotNull("", result);
@@ -26,7 +25,7 @@ public class InsertionSortTest {
     @Test
     public void reverseSortString() {
         Comparator<Character> comparator = (i, j) -> -Character.compare(i, j);
-        SortingStrategy<Character> insertionSort = new InsertionSort<>(comparator);
+        SortingStrategy<Character> insertionSort = new SelectionSort<>(comparator);
         Character[] letters = "INSERTIONSORT".chars().mapToObj(c -> (char) c).toArray(Character[]::new);
         Character[] result = insertionSort.sort(letters);
         assertNotNull("", result);
@@ -36,7 +35,7 @@ public class InsertionSortTest {
     @Test
     public void sortInteger() {
         Comparator<Integer> comparator = Integer::compare;
-        SortingStrategy<Integer> insertionSort = new InsertionSort<>(comparator);
+        SortingStrategy<Integer> insertionSort = new SelectionSort<>(comparator);
         Integer[] nums = {1, 7, 8, 9, 2, 5, 6, 4, 3, 0};
 
         Integer[] result = insertionSort.sort(nums);
@@ -48,7 +47,7 @@ public class InsertionSortTest {
     @Test
     public void reverseSortInteger() {
         Comparator<Integer> comparator = (i, j) -> -Integer.compare(i, j);
-        SortingStrategy<Integer> insertionSort = new InsertionSort<>(comparator);
+        SortingStrategy<Integer> insertionSort = new SelectionSort<>(comparator);
         Integer[] nums = {1, 7, 8, 9, 2, 5, 6, 4, 3, 0};
         Integer[] result = insertionSort.sort(nums);
         assertNotNull("", result);
