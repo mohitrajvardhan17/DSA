@@ -12,7 +12,7 @@ import java.util.Comparator;
  *
  * Stable Sorting Algorithms:
  * TIME COMPLEXITY
- * BEST = O(n^2) and Not O(n)
+ * BEST = O(n)
  * AVERAGE = O(n^2)
  * WORST = O(n^2)
  * <p>
@@ -25,17 +25,23 @@ import java.util.Comparator;
  */
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
-public class BubbleSort<T> implements SortingStrategy<T> {
+public class OptimizedBubbleSort<T> implements SortingStrategy<T> {
 
     private final @NonNull Comparator<T> comparator;
 
     @Override
     public T[] sort(T[] items) {
+        boolean swapped;
         for (int i = items.length - 1; i > 0 ; i--) {
+            swapped = false;
             for (int j = 0; j < i; j++) {
                 if (comparator.compare(items[j], items[j + 1]) > 0) {
                     swap(items, j, j + 1);
+                    swapped = true;
                 }
+            }
+            if (!swapped) {
+                break;
             }
             display(items);
         }
